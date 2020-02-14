@@ -2,7 +2,7 @@ const User = require('../models/User');
 
 module.exports = {
   async store(req, res) {
-    const { filename } = req.file;
+    const { filename } = req.file || 'vazio'
     const {
       name, email, cpf, password,
     } = req.body;
@@ -25,7 +25,7 @@ module.exports = {
         throw 'User Already Exists';
       }
     } catch (err) {
-      res.status(409).send('Erro. Usuário já existente');
+      res.status(409).json({ message: 'Erro. Usuário já existente' });
     }
   },
 
@@ -52,7 +52,7 @@ module.exports = {
         throw 'User not found';
       }
     } catch (err) {
-      res.status(409).send('Erro. Usuário não localizado para exclusão');
+      res.status(409).json({ message: 'Erro. Usuário não localizado para exclusão' });
     }
   },
 
@@ -80,7 +80,7 @@ module.exports = {
         throw 'User not found';
       }
     } catch (err) {
-      res.status(409).send('Erro. Não foi possível atualizar os dados do usuário.');
+      res.status(409).json({message: 'Erro. Não foi possível atualizar os dados do usuário.'});
     }
   },
 };

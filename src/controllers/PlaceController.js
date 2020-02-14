@@ -36,7 +36,7 @@ module.exports = {
         throw 'Place with this email already Exists';
       }
     } catch (err) {
-      res.status(409).send('Erro. Local já cadastrado com esse email');
+      res.status(409).json({ error: 'Erro. Local já cadastrado com esse email' });
     }
   },
 
@@ -63,7 +63,7 @@ module.exports = {
         throw 'Place not found';
       }
     } catch (err) {
-      res.status(409).send('Erro. Local não localizado para exclusão');
+      res.status(409).json({ error: 'Erro. Local não localizado para exclusão' });
     }
   },
 
@@ -90,7 +90,7 @@ module.exports = {
         throw 'User not found';
       }
     } catch (err) {
-      res.status(409).send('Erro. Não foi possível atualizar os dados do local.');
+      res.status(409).json({ error: 'Erro. Não foi possível atualizar os dados do local.' });
     }
   },
 };

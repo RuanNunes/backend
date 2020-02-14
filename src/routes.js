@@ -17,7 +17,7 @@ const pathPlaces = '/Places';
 const pathSessions = '/Sessions';
 
 routes.post(pathSessions, SessionController.store);
-routes.post(pathUsers, upload.single('avatarUser'), UserController.store);
+routes.post(pathUsers, upload.single('avatar_url'), UserController.store);
 
 routes.use(auth);
 
@@ -25,7 +25,7 @@ routes.get(pathUsers, UserController.index);
 routes.delete(pathUsers, UserController.destroy);
 routes.put(pathUsers, UserController.update);
 
-routes.post(pathPlaces, upload.single('avatarPlace'), PlaceController.store);
+routes.post(pathPlaces, upload.single('avatar_url'), PlaceController.store);
 routes.post(pathPlaces, PlaceController.store);
 routes.get(pathPlaces, PlaceController.index);
 routes.delete(pathPlaces, PlaceController.destroy);
